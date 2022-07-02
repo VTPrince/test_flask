@@ -1,1 +1,1 @@
-web: gunicorn app:get_my_ip
+web: gunicorn --bind 0.0.0.0:$PORT app:main
