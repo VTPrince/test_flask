@@ -39,7 +39,8 @@ app = Flask(__name__)
 @app.route("/", methods=["GET"])
 def get_my_ip():
     return '<h1>ip : '+request.remote_addr
-
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 
