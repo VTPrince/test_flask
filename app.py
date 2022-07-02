@@ -1,12 +1,14 @@
 from flask import request,Flask
 from flask import jsonify
 app = Flask(__name__)
-@app.route("/", methods=["GET"])
-
-def main():
-    if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
-        return '<h1>new ip : '+request.environ['REMOTE_ADDR'])
+@app.route("/get_my_ip", methods=["GET"])
+def get_my_ip():
+    if 'X-Forwarded-For' in request.headers:
+        proxy_data = request.headers['X-Forwarded-For']
+        ip_list = proxy_data.split(',')
+        user_ip = 'np'+ip_list[1]  # first address in list is User IP
     else:
-        return '<h1>othernew ip : '+request.environ['HTTP_X_FORWARDED_FOR'])
+        user_ip = 'tp'+request.remote_addr
+    return '<h1>ip : '+ user_ip #request.remote_addr
 if __name__ == '__main__':
     app.run(debug=True)
