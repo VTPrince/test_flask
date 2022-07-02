@@ -11,6 +11,6 @@ def main():
     else:
         user_ip = request.remote_addr
     ip = geocoder.ip(user_ip)
-    return '<h1>ip : '+ str(ip.city) #request.remote_addr
+    return '<h1>City : '+ str(ip.city)+'Lat Long : '+str(ip.latlng) #request.remote_addr
 if __name__ == '__main__':
     app.run(debug=True)
