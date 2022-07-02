@@ -1,7 +1,7 @@
 from flask import request,Flask
 from flask import jsonify
 app = Flask(__name__)
-@app.route("/get_my_ip", methods=["GET"])
+@app.route("/", methods=["GET"])
 
 def main():
     return '<h1>ip : '+request.remote_addr
